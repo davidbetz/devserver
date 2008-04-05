@@ -11,7 +11,13 @@ namespace DevServer.Configuration
         {
             get
             {
-                return (String)this["address"];
+                String address = (String)this["address"];
+                if (address.ToLower() == "localhost")
+                {
+                    address = "loopback";
+                }
+                //+
+                return address;
             }
             set
             {
