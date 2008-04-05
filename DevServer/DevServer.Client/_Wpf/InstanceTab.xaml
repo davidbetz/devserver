@@ -1,0 +1,249 @@
+﻿<TabItem x:Class="DevServer.Client.InstanceTab"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:diagnostics="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+    xmlns:local="clr-namespace:DevServer.Client"
+    xmlns:converter="clr-namespace:DevServer.Client.TypeConverter">
+    <TabItem.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resource\GlobalResource.xaml" />
+                <ResourceDictionary Source="Resource\TabItemResource.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </TabItem.Resources>
+    <TabItem.Header>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel.Resources>
+                <converter:InstanceStateToImageConverter x:Key="instanceStateToImageConverter" />
+            </StackPanel.Resources>
+            <Image Source="{Binding Instance.State, Converter={StaticResource instanceStateToImageConverter}}" Height="16" Width="16" />
+            <TextBlock Text="{Binding Instance.Name}" />
+		</StackPanel>
+    </TabItem.Header>
+    <DockPanel>
+        <DockPanel.Resources>
+            <Style x:Key="titleStyle" TargetType="{x:Type TextBlock}">
+                <Setter Property="Width" Value="100"></Setter>
+            </Style>
+            <Style x:Key="textStyle" TargetType="{x:Type TextBlock}">
+                <Setter Property="Width" Value="400"></Setter>
+            </Style>
+            <converter:InstanceStatusToTextConverter x:Key="instanceStatusToTextConverter" />
+        </DockPanel.Resources>
+        <DockPanel DockPanel.Dock="Top">
+            <StackPanel Name="spMetadata" DockPanel.Dock="Left" HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource titleStyle}" Text="Instance ID:" />
+					<TextBlock Style="{StaticResource textStyle}" Text="{Binding Instance.Id}" />
+				</StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource titleStyle}" Text="Status:" />
+					<TextBlock Style="{StaticResource textStyle}" Text="{Binding Instance.State, Converter={StaticResource instanceStatusToTextConverter}}" />
+				</StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource titleStyle}" Text="Virtual Path:" />
+					<TextBlock Style="{StaticResource textStyle}" Text="{Binding Instance.VirtualPath}" />
+				</StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource titleStyle}" Text="Port:" />
+					<TextBlock Style="{StaticResource textStyle}" Text="{Binding Instance.Port}" />
+				</StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource titleStyle}" Text="Physical Path:" />
+					<TextBlock Style="{StaticResource textStyle}" Text="{Binding Instance.PhysicalPath}" />
+				</StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Link:" Style="{StaticResource titleStyle}" />
+					<Button Name="btnLink" Width="400" Template="{StaticResource linkButtonTemplate}">
+					</Button>
+				</StackPanel>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Right" HorizontalAlignment="Right" Width="170">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Width="120" Text="Bound Address: " TextAlignment="Left" />
+					<TextBlock Name="txtIPAddress" TextAlignment="Left" Text="{Binding Instance.BoundIPAddress}" />
+				</StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Width="120" Text="Tracing: " TextAlignment="Left" />
+					<!--<TextBlock Name="txtEnableTracing" Text="{Binding Instance.EnableTracing}" />-->
+					<CheckBox Name="chkEnableTracing" IsChecked="{Binding Instance.HostConfiguration.EnableTracing}" />
+				</StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Width="120" Text="Verbose Type Tracing: " TextAlignment="Left" />
+					<CheckBox Name="chkVerboseTypeTracing" IsChecked="{Binding Instance.HostConfiguration.EnableVerboseTypeTracing}" />
+				</StackPanel>
+            </StackPanel>
+        </DockPanel>
+        <DockPanel Name="spToolBox"  DockPanel.Dock="Bottom">
+            <DockPanel.Resources>
+                <converter:TraceStatusToTextConverter x:Key="traceStatusToTextConverter" />
+                <converter:InstanceStatusToButtonContentConverter x:Key="instanceStatusToButtonContentConverter" />
+                <converter:VerboseTypeTracingToTextConverter x:Key="verboseTypeTracingToTextConverter" />
+            </DockPanel.Resources>
+            <Button DockPanel.Dock="Left" HorizontalAlignment="Left" Name="btnClearTracing" Content="Clear Tracing" Style="{StaticResource globalButtonStyle}" />
+            <StackPanel DockPanel.Dock="Right" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Name="btnRestartInstance" Content="Restart" Style="{StaticResource globalButtonStyle}" />
+                <Button Name="btnStopInstance" Content="{Binding Instance.State, Converter={StaticResource instanceStatusToButtonContentConverter}}" Style="{StaticResource globalButtonStyle}" />
+                <Button Name="btnKillInstance" Content="Kill" Style="{StaticResource globalButtonStyle}" />
+            </StackPanel>
+            <!--<Button Name="btnToggleTracing" Content="{Binding Instance.EnableTracing, Converter={StaticResource traceStatusToTextConverter}}" Style="{StaticResource globalButtonStyle}" Width="95" />-->
+            <!--<Button Name="btnToggleVerboseTypeTracing" Content="{Binding Instance.EnableVerboseTypeTracing, Converter={StaticResource verboseTypeTracingToTextConverter}}" Style="{StaticResource globalButtonStyle}" Width="95" />-->
+        </DockPanel>
+        <Grid Name="gMain" ShowGridLines="False">
+            <Grid.Resources>
+                <Style TargetType="{x:Type TextBox}">
+                    <Setter Property="Background" Value="{StaticResource requestResponseControlBackground}" />
+                </Style>
+                <Style TargetType="{x:Type ListBox}">
+                    <Setter Property="Background" Value="{StaticResource requestResponseControlBackground}" />
+                </Style>
+                <Style TargetType="{x:Type TreeView}">
+                    <Setter Property="Background" Value="{StaticResource requestResponseControlBackground}" />
+                </Style>
+                <Style x:Key="headerListBoxStyle" TargetType="{x:Type ListBox}" BasedOn="{StaticResource globalListBoxStyle}">
+                    <Setter Property="Background" Value="{StaticResource requestResponseControlBackground}" />
+                </Style>
+                <converter:HttpStatusCodeToBackgroundConverter x:Key="httpStatusCodeToBackgroundConverter" />
+                <converter:DateTimeToTimeOnlyConverter x:Key="dateTimeToTimeOnlyConverter" />
+                <converter:DataToFormattedDataConverter x:Key="dataToFormattedDataConverter" />
+                <converter:UrlToFileSegmentOnlyConverter x:Key="urlToFileSegmentOnlyConverter" />
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="3" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="3" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBox Name="txtFilter" Grid.Row="0" Grid.RowSpan="1" Grid.Column="0"></TextBox>
+            <ListBox Name="lstRequest" Grid.Row="1" Grid.RowSpan="4" Grid.Column="0"
+                     IsSynchronizedWithCurrentItem="True"
+                     ItemsSource="{Binding}">
+                <ListBox.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+                    <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent" />
+                </ListBox.Resources>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="{Binding Request.StatusCode, Converter={StaticResource httpStatusCodeToBackgroundConverter}}"
+                                 x:Name="requestItemTemplateBorder"
+                                BorderThickness="2"
+                                Padding="2"
+                                Margin="1"
+                                CornerRadius="1"
+                                >
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel.Resources>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Foreground" Value="Black" />
+                                    </Style>
+                                </StackPanel.Resources>
+                                <TextBlock Text="{Binding Request.StatusCode}" />
+								<TextBlock Text=" - " />
+								<TextBlock Text="{Binding Request.Verb}" />
+								<TextBlock Text=" - " />
+								<TextBlock Text="{Binding Response.ContentType}" />
+								<TextBlock Text=" - " />
+								<TextBlock Text="{Binding Request.Url, Converter={StaticResource urlToFileSegmentOnlyConverter}}" TextDecorations="Underline" />
+								<TextBlock Text=" - " />
+								<TextBlock Text="{Binding Request.DateTime, Converter={StaticResource dateTimeToTimeOnlyConverter}}" />
+							</StackPanel>
+                        </Border>
+                        <DataTemplate.Triggers>
+                            <DataTrigger
+                                    Binding="{Binding Path=IsSelected, 
+                                                      RelativeSource={RelativeSource Mode=FindAncestor, 
+                                                                                     AncestorType={x:Type ListBoxItem}}}"
+                                   Value="True">
+                                <Setter Property="BorderBrush" Value="#333" TargetName="requestItemTemplateBorder" />
+                            </DataTrigger>
+                            <DataTrigger
+                                    Binding="{Binding Path=IsSelected, 
+                                                      RelativeSource={RelativeSource Mode=FindAncestor, 
+                                                                                     AncestorType={x:Type ListBoxItem}}}"
+                                   Value="False">
+                                <Setter Property="BorderBrush" Value="Transparent" TargetName="requestItemTemplateBorder" />
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <GridSplitter Width="6" Grid.Column="1" Grid.Row="0" Grid.RowSpan="5" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+            <DockPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2">
+                <DockPanel.Resources>
+                    <converter:Int32ToFormattedStringConverter x:Key="int32ToFormattedStringConverter" />
+                </DockPanel.Resources>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                    <TextBlock Text="Request URI: " />
+					<TextBlock Text="{Binding Request.Url}" />
+				</StackPanel>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
+                    <TextBlock Text="Request Content Length: " />
+					<TextBlock Name="txtRequestContentLength" Text="{Binding Request.ContentLength, Converter={StaticResource int32ToFormattedStringConverter}}" />
+				</StackPanel>
+                <TabControl TabStripPlacement="Bottom">
+                    <TabItem Header="Formatted" Style="{StaticResource stateDataTabStyle}">
+                        <TextBox Name="txtRequestDataDataFormatted" Text="{Binding Request.Data, Converter={StaticResource dataToFormattedDataConverter}}" Style="{StaticResource dataTextBoxStyle}" IsReadOnly="True" />
+                    </TabItem>
+                    <TabItem Header="Raw" Style="{StaticResource stateDataTabStyle}">
+                        <TextBox Name="txtRequestDataDataRaw" Text="{Binding Request.Data}" Style="{StaticResource dataTextBoxStyle}" IsReadOnly="True" />
+                    </TabItem>
+                </TabControl>
+            </DockPanel>
+            <ListBox Name="lstRequestHeaders" Grid.Row="0" Grid.RowSpan="2" Grid.Column="5" ItemsSource="{Binding Request.HeaderList}" ItemTemplate="{StaticResource headerListBoxItemTemplate}" Style="{StaticResource headerListBoxStyle}" SelectionMode="Extended">
+                <ListBox.CommandBindings>
+                    <CommandBinding Command="Copy" Executed="HeaderListBoxCommandBinding_Executed"></CommandBinding>
+                </ListBox.CommandBindings>
+            </ListBox>
+            <DockPanel Grid.Row="2" Grid.RowSpan="3" Grid.Column="2" Grid.ColumnSpan="2">
+                <DockPanel.Resources>
+                    <converter:Int32ToFormattedStringConverter x:Key="int32ToFormattedStringConverter" />
+                </DockPanel.Resources>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
+                    <TextBlock Text="Response Content Length: " />
+					<TextBlock Name="txtResponseContentLength" Text="{Binding Response.ContentLength, Converter={StaticResource int32ToFormattedStringConverter}}" />
+				</StackPanel>
+                <TabControl Grid.Row="3" Grid.RowSpan="2" Grid.Column="5" TabStripPlacement="Bottom">
+                    <TabItem Header="Formatted" Style="{StaticResource stateDataTabStyle}">
+                        <TextBox Name="txtResponseDataFormatted" Text="{Binding Response.Data, Converter={StaticResource dataToFormattedDataConverter}}" Style="{StaticResource dataTextBoxStyle}" IsReadOnly="True" />
+                    </TabItem>
+                    <TabItem Header="Raw" Style="{StaticResource stateDataTabStyle}">
+                        <TextBox Name="txtResponseDataRaw" Text="{Binding Response.Data}" Style="{StaticResource dataTextBoxStyle}" IsReadOnly="True" />
+                    </TabItem>
+                </TabControl>
+            </DockPanel>
+            <ListBox Name="txtResponseHeaders" Grid.Row="2" Grid.Column="5" ItemsSource="{Binding Response.HeaderList}" ItemTemplate="{StaticResource headerListBoxItemTemplate}" Style="{StaticResource headerListBoxStyle}" SelectionMode="Extended">
+                <ListBox.CommandBindings>
+                    <CommandBinding Command="Copy" Executed="HeaderListBoxCommandBinding_Executed"></CommandBinding>
+                </ListBox.CommandBindings>
+            </ListBox>
+            <TabControl Grid.Row="3" Grid.RowSpan="2" Grid.Column="5" TabStripPlacement="Bottom">
+                <TabControl.Resources>
+                    <converter:StateTreeToFormattedStateTreeConverter x:Key="stateTreeToFormattedStateTreeConverter" />
+                </TabControl.Resources>
+                <TabItem Header="Request VS" Style="{StaticResource stateDataTabStyle}">
+                    <TextBox Text="{Binding Request.ViewState, Converter={StaticResource stateTreeToFormattedStateTreeConverter}}" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+                </TabItem>
+                <TabItem Header="Request CS" Style="{StaticResource stateDataTabStyle}">
+                    <TextBox Text="{Binding Request.ControlState, Converter={StaticResource stateTreeToFormattedStateTreeConverter}}" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+                </TabItem>
+                <TabItem Header="Response VS" Style="{StaticResource stateDataTabStyle}">
+                    <TextBox Text="{Binding Response.ViewState, Converter={StaticResource stateTreeToFormattedStateTreeConverter}}" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+                </TabItem>
+                <TabItem Header="Response CS" Style="{StaticResource stateDataTabStyle}">
+                    <TextBox Text="{Binding Response.ControlState, Converter={StaticResource stateTreeToFormattedStateTreeConverter}}" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+                </TabItem>
+            </TabControl>
+            <GridSplitter Width="6" Grid.Column="4" Grid.Row="0" Grid.RowSpan="5" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+        </Grid>
+    </DockPanel>
+</TabItem>

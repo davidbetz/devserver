@@ -1,0 +1,257 @@
+﻿<Project DefaultTargets="Build" ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>local</ProjectType>
+    <ProjectVersion>7.10.3077</ProjectVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{19550672-2ED8-4A08-8150-ED3A27DD3FE6}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <AssemblyName>DevServer.Client</AssemblyName>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>WinExe</OutputType>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>0.0</OldToolsVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>DevServer.snk</AssemblyOriginatorKeyFile>
+    <RootNamespace>DevServer.Client</RootNamespace>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <PublishUrl>http://localhost/WebDev.WebServer/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugSymbols>true</DebugSymbols>
+    <NoStdLib>false</NoStdLib>
+    <Optimize>false</Optimize>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugSymbols>false</DebugSymbols>
+    <NoStdLib>false</NoStdLib>
+    <Optimize>true</Optimize>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Jayrock.Json, Version=0.9.8316.0, Culture=neutral, PublicKeyToken=7223e3c9c165ef25, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Assembly\Jayrock.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework.Classic">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework.Luna">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework.Royale">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="ReachFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.XML" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="_Wpf\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Configuration\StartupProfile\Profile\ProfileCollection.cs" />
+    <Compile Include="Configuration\StartupProfile\StartupProfileCollection.cs" />
+    <Compile Include="Configuration\StartupProfile\Profile\Server\ProfileServerElement.cs" />
+    <Compile Include="Configuration\DevServerConfigurationFacade.cs" />
+    <Compile Include="Configuration\DevServerConfigurationSection.cs" />
+    <Compile Include="Configuration\RequestTracing\AllowedContentType\AllowedContentTypeCollection.cs" />
+    <Compile Include="Configuration\RequestTracing\AllowedContentType\AllowedContentTypeElement.cs" />
+    <Compile Include="Configuration\RequestTracing\RequestTracingElement.cs" />
+    <Compile Include="Configuration\Servers\Server\Binding\BindingElement.cs" />
+    <Compile Include="Configuration\Servers\Server\RequestTracing\RequestTracingElement.cs" />
+    <Compile Include="Configuration\Servers\Server\ServerCollection.cs" />
+    <Compile Include="Configuration\Servers\Server\ServerElement.cs" />
+    <Compile Include="Configuration\WebServer\ContentTypeMapping\ContentTypeMappingCollection.cs" />
+    <Compile Include="Configuration\WebServer\ContentTypeMapping\ContentTypeMappingElement.cs" />
+    <Compile Include="Configuration\WebServer\DefaultDocument\DefaultDocumentCollection.cs" />
+    <Compile Include="Configuration\WebServer\DefaultDocument\DocumentElement.cs" />
+    <Compile Include="Configuration\WebServer\WebServerElement.cs" />
+    <Compile Include="CommandLineParser.cs" />
+    <Compile Include="CommandLineDictionary.cs" />
+    <Compile Include="Filter\FilterManager.cs" />
+    <Compile Include="PathFormatter.cs" />
+    <Compile Include="RequestResponseSet.cs" />
+    <Compile Include="_Wpf\TypeConverter\UrlToFileSegmentOnlyConverter.cs" />
+    <Compile Include="_Wpf\TypeConverter\VerboseTypeTracingToTextConverter.cs" />
+    <Compile Include="_Wpf\TypeConverter\DataToFormattedDataConverter.cs" />
+    <Compile Include="_Wpf\TypeConverter\StateTreeToFormattedStateTreeConverter.cs" />
+    <Compile Include="_General\Xml\XmlFormatter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ServerConfiguration.cs" />
+    <Compile Include="_Wpf\CoreApplication.cs" />
+    <Compile Include="_Wpf\InstanceTab.xaml.cs">
+      <DependentUpon>InstanceTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="_Wpf\TabControl.cs" />
+    <Compile Include="_Wpf\TypeConverter\InstanceStatusToButtonContentConverter.cs" />
+    <Compile Include="_Wpf\TypeConverter\Int32ToFormattedStringConverter.cs" />
+    <Compile Include="_Wpf\TypeConverter\TraceStatusToTextConverter.cs" />
+    <Compile Include="_Wpf\TypeConverter\InstanceStateToImageConverter.cs" />
+    <Compile Include="_Wpf\TypeConverter\DateTimeToTimeOnlyConverter.cs" />
+    <Compile Include="_Wpf\TypeConverter\HttpStatusCodeToBackgroundConverter.cs" />
+    <Compile Include="_Wpf\TypeConverter\InstanceStatusToTextConverter.cs" />
+    <Compile Include="_Wpf\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DevServer.ServiceImpl\DevServer.ServiceImpl.csproj">
+      <Project>{70A2DF5A-190B-4B67-99CF-1BDEED93CCEB}</Project>
+      <Name>DevServer.ServiceImpl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DevServer.Service\DevServer.Service.csproj">
+      <Project>{96520D1F-1AE4-40AD-9423-8CA32123CBE3}</Project>
+      <Name>DevServer.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DevServer.WebCore\DevServer.WebCore.csproj">
+      <Project>{95E76C40-E2FF-437F-AC5A-6B33E08495E1}</Project>
+      <Name>DevServer.WebCore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="DevServer.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="_Wpf\Resource\GlobalResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="_Wpf\Resource\MainWindowResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Page Include="_Wpf\About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_Wpf\InstanceTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="_Wpf\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="_Wpf\Image\application_view_list.ico" />
+    <Resource Include="_Wpf\Image\cancel.png" />
+    <Resource Include="_Wpf\Image\bullet_green.png" />
+    <Resource Include="_Wpf\Image\bullet_orange.png" />
+    <Resource Include="_Wpf\Image\bullet_red.png" />
+    <Resource Include="_Wpf\Resource\TabItemResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="_Wpf\Image\NetFXHarmonics.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="_Wpf\Image\bullet_purple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="_Wpf\Image\bullet_black.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
