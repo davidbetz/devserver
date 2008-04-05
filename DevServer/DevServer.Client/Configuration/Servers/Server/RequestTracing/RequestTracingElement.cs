@@ -6,16 +6,16 @@ namespace DevServer.Configuration
     public class ServerRequestTracingElement : ConfigurationElement
     {
         //- @Enable -//
-        [ConfigurationProperty("enable", DefaultValue = false)]
+        [ConfigurationProperty("enabled", DefaultValue = false)]
         public Boolean Enable
         {
             get
             {
-                return (Boolean)this["enable"];
+                return (Boolean)this["enabled"];
             }
             set
             {
-                this["enable"] = value;
+                this["enabled"] = value;
             }
         }
 
