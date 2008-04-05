@@ -239,13 +239,15 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="_Wpf\Image\NetFXHarmonics.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="_Wpf\Image\bullet_purple.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="_Wpf\Image\bullet_black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="_Wpf\Image\NetFXHarmonicsDevServer.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

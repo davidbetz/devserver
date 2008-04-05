@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 //+
 namespace DevServer.Client
 {
@@ -19,7 +20,15 @@ namespace DevServer.Client
             {
                 throw new ArgumentException("You cannot define 'activeProfile' and 'serverKey' at the same time");
             }
-            new CoreApplication(ServerConfiguration.ReadServerInstances(dictionary)).Run();
+            try
+            {
+                new CoreApplication(ServerConfiguration.ReadServerInstances(dictionary)).Run();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
         }
     }
 }
