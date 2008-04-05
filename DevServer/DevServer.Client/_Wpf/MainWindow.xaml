@@ -1,0 +1,133 @@
+﻿<Window x:Class="DevServer.Client.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:wsl="clr-namespace:DevServer.Client"
+    Title="NetFXHarmonics DevServer"
+    Width="800" Height="600" ResizeMode="CanResize"
+    Icon="Image\application_view_list.ico">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resource\GlobalResource.xaml" />
+                <ResourceDictionary Source="Resource\MainWindowResource.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <DockPanel>
+        <StatusBar DockPanel.Dock="Bottom" Height="30">
+            <StatusBar.Background>
+                <LinearGradientBrush>
+                    <GradientStop Offset="0" Color="#aaa" />
+                    <GradientStop Offset="1" Color="#fff" />
+                </LinearGradientBrush>
+            </StatusBar.Background>
+            <StatusBarItem>
+                <TextBlock Name="tbStatusMessage" />
+			</StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <Button Name="btnAbout" Content="About" Style="{StaticResource globalButtonStyle}" />
+            </StatusBarItem>
+        </StatusBar>
+        <wsl:TabControl x:Name="tcMain">
+            <TabItem Name="tiManagement" Header="Management" Style="{StaticResource tabStyle}">
+                <DockPanel>
+                    <DockPanel.Resources>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Width" Value="120"></Setter>
+                        </Style>
+                        <Style TargetType="{x:Type TextBox}">
+                            <Setter Property="Width" Value="400"></Setter>
+                        </Style>
+                        <Style x:Key="titleTextBlockStyle" TargetType="{x:Type TextBlock}">
+                            <Setter Property="FontFamily" Value="Calibri"></Setter>
+                            <Setter Property="FontWeight" Value="Bold"></Setter>
+                            <Setter Property="FontSize" Value="14"></Setter>
+                            <Setter Property="Margin" Value="4 2"></Setter>
+                        </Style>
+                    </DockPanel.Resources>
+                    <StackPanel DockPanel.Dock="Top">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Quick Start" Style="{StaticResource titleTextBlockStyle}" Width="400" />
+						</StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Name:"></TextBlock>
+                            <TextBox Name="txtInstanceName" Text="{Binding Path=Name}"></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Virtual Path:"></TextBlock>
+                            <TextBox Name="txtVirtualPath" Text="{Binding Path=VirtualPath}"></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Port:"></TextBlock>
+                            <TextBox Name="txtPort" Text="{Binding Path=Port}"></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Physical Path:"></TextBlock>
+                            <TextBox Name="txtPhysicalPath" Text="{Binding Path=PhysicalPath}"></TextBox>
+                        </StackPanel>
+                    </StackPanel>
+                    <Grid DockPanel.Dock="Bottom">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.Resources>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Width" Value="100"></Setter>
+                            </Style>
+                        </Grid.Resources>
+                        <Button Grid.Column="0" HorizontalAlignment="Left" Name="btnCreateNewInstance" Content="Create" Style="{StaticResource globalButtonStyle}" />
+                        <Button Grid.Column="1" HorizontalAlignment="Right" Name="btnRefreshInstanceList" Content="Refresh List" Style="{StaticResource globalButtonStyle}" />
+                    </Grid>
+                    <DockPanel>
+                        <StackPanel DockPanel.Dock="Top">
+                            <TextBlock Style="{StaticResource titleTextBlockStyle}" Text="Startup Instance List" />
+							<ComboBox Name="ddlInstanceList" ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True">
+								<ComboBox.ItemTemplate>
+									<DataTemplate>
+										<TextBlock Name="tbName" Text="{Binding Path=Name}" />
+									</DataTemplate>
+								</ComboBox.ItemTemplate>
+							</ComboBox>
+							<TextBlock Style="{StaticResource titleTextBlockStyle}" Text="Message Log" />
+						</StackPanel>
+                        <ListBox Name="txtMessageLog" Style="{StaticResource globalListBoxStyle}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <StackPanel.Resources>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Setter Property="Foreground" Value="Black" />
+                                            </Style>
+                                        </StackPanel.Resources>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding PrettyDateTime}" />
+											<TextBlock Text=" - " />
+											<TextBlock Text="{Binding Summary}" />
+										</StackPanel>
+                                        <Grid>
+                                            <Grid.Style>
+                                                <Style>
+                                                    <Style.Triggers>
+                                                        <DataTrigger
+                                                        Binding="{Binding Path=IsSelected, 
+                                                                          RelativeSource={RelativeSource Mode=FindAncestor, 
+                                                                                                         AncestorType={x:Type ListBoxItem}}}"
+                                                        Value="False">
+                                                            <Setter Property="Grid.Visibility" Value="Collapsed" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Grid.Style>
+                                            <TextBlock Text="{Binding Detail}" />
+										</Grid>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </DockPanel>
+                </DockPanel>
+            </TabItem>
+        </wsl:TabControl>
+    </DockPanel>
+</Window>
