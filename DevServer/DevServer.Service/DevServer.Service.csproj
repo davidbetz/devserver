@@ -51,8 +51,8 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="_Client\RequestManagementClient.cs" />
-    <Compile Include="_Client\ManagementClient.cs" />
+    <Compile Include="Client\RequestManagementClient.cs" />
+    <Compile Include="Client\ManagementClient.cs" />
     <Compile Include="_DataContract\HostConfiguration.cs" />
     <Compile Include="_DataContract\ContentType.cs" />
     <Compile Include="_DataContract\TracingConfiguration.cs" />
