@@ -58,6 +58,7 @@ namespace DevServer.Client.Filter
                     continue;
                 }
             }
+            //+
             return result;
         }
 
@@ -74,6 +75,7 @@ namespace DevServer.Client.Filter
                     throw new FormatException("Invalid verb");
             }
             result = set.Request.Verb.ToLower().Contains(verb);
+            //+
             return result;
         }
 
@@ -90,6 +92,7 @@ namespace DevServer.Client.Filter
             {
                 return true;
             }
+            //+
             return result;
         }
 
@@ -107,6 +110,7 @@ namespace DevServer.Client.Filter
             {
                 return true;
             }
+            //+
             return result;
         }
 
@@ -123,6 +127,7 @@ namespace DevServer.Client.Filter
             {
                 return true;
             }
+            //+
             return result;
         }
     }

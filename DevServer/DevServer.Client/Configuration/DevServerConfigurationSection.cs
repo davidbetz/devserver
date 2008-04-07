@@ -20,7 +20,6 @@ namespace DevServer.Configuration
             }
         }
 
-
         //- @WebServer -//
         [ConfigurationProperty("webServer")]
         public WebServerElement WebServer
