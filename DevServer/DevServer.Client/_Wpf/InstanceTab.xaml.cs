@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using DevServer;
-using DevServer.Service;
-using DevServer.Service.Client;
-using System.ComponentModel;
 using System.Windows.Data;
 using DevServer.Client.Filter;
-using System.Text;
+using DevServer.Service;
+using DevServer.Service.Client;
 //+
 namespace DevServer.Client
 {

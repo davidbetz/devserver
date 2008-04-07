@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
-
+//+
 namespace DevServer.Client
 {
     internal class CoreApplication : System.Windows.Application
