@@ -139,7 +139,7 @@ namespace DevServer.Client
                 {
                     Instance instance = new Instance()
                     {
-                        Name = txtInstanceName.Name,
+                        Name = txtInstanceName.Text,
                         PhysicalPath = txtPhysicalPath.Text,
                         Port = Int32.Parse(txtPort.Text),
                         VirtualPath = txtVirtualPath.Text,
