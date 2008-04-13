@@ -198,6 +198,7 @@ namespace DevServer.Service
             Func<Server, Boolean> specificInstanceId = x => x.Instance.Id == instance.Id;
             Server server = this.Servers.Single(specificInstanceId);
             //+
+            server.Stop();
             server.Dispose();
             //+
             this.Servers.Remove(server);
