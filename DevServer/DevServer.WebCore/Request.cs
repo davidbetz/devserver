@@ -377,23 +377,26 @@ namespace DevServer.WebCore
                     }
                     //+
                     Int32 extensionIndex = this.Path.LastIndexOf(".");
-                    String extension = this.Path.Substring(extensionIndex, this.Path.Length - extensionIndex);
-                    Regex regex = new Regex("\\.([_\\-a-z0-9]+$)", RegexOptions.IgnoreCase);
-                    //+ is this an extension or just everything after the last period including slash and other stuff (i.e. .svc/mex)?
-                    if (regex.IsMatch(extension))
+                    if (extensionIndex > -1)
                     {
-                        String contentType = ContentType.GetContentype(extension, this.Configuration.ContentTypeMappings);
-                        if (!String.IsNullOrEmpty(contentType))
+                        String extension = this.Path.Substring(extensionIndex, this.Path.Length - extensionIndex);
+                        Regex regex = new Regex("\\.([_\\-a-z0-9]+$)", RegexOptions.IgnoreCase);
+                        //+ is this an extension or just everything after the last period including slash and other stuff (i.e. .svc/mex)?
+                        if (regex.IsMatch(extension))
                         {
-                            String before = headers.Substring(0, contentTypeIndex);
-                            String after = headers.Substring(newLineIndex + 2, headers.Length - newLineIndex - 2);
-                            this.ResponseHeadersBuilder = new StringBuilder(before);
-                            this.ResponseHeadersBuilder.Append("Content-Type: " + contentType + "\r\n");
-                            this.ResponseHeadersBuilder.Append(after);
-                            //+ modify existing header information
-                            this.ResponseContentType = contentType;
-                            Header header = this.ResponseHeaderList.Find(p => p.Name == "Content-Type");
-                            header.Data = contentType;
+                            String contentType = ContentType.GetContentype(extension, this.Configuration.ContentTypeMappings);
+                            if (!String.IsNullOrEmpty(contentType))
+                            {
+                                String before = headers.Substring(0, contentTypeIndex);
+                                String after = headers.Substring(newLineIndex + 2, headers.Length - newLineIndex - 2);
+                                this.ResponseHeadersBuilder = new StringBuilder(before);
+                                this.ResponseHeadersBuilder.Append("Content-Type: " + contentType + "\r\n");
+                                this.ResponseHeadersBuilder.Append(after);
+                                //+ modify existing header information
+                                this.ResponseContentType = contentType;
+                                Header header = this.ResponseHeaderList.Find(p => p.Name == "Content-Type");
+                                header.Data = contentType;
+                            }
                         }
                     }
                 }
@@ -895,7 +898,13 @@ namespace DevServer.WebCore
                     else if (!this.ProcessDirectoryListingRequest())
                     {
                         this.PrepareResponse();
-                        HttpRuntime.ProcessRequest(this);
+                        try
+                        {
+                            HttpRuntime.ProcessRequest(this);
+                        }
+                        catch
+                        {
+                        }
                     }
                 }
                 //+
