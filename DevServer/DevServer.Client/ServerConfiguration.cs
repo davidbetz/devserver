@@ -131,7 +131,7 @@ namespace DevServer.Client
             List<ServerElement> servers = new List<ServerElement>();
             if (!String.IsNullOrEmpty(activeProfile) && activeProfile != "none")
             {
-                servers = PullServersFromActiveProfile(cs.StartupProfiles.ActiveProfile, cs);
+                servers = PullServersFromActiveProfile(activeProfile, cs);
             }
             //+
             if (servers.Count > 0)
