@@ -121,7 +121,19 @@ namespace DevServer.Client
             };
             btnLink.Click += delegate
             {
-                System.Diagnostics.Process.Start(btnLink.Content.ToString());
+                try
+                {
+                    System.Diagnostics.Process.Start(btnLink.Content.ToString());
+                }
+                catch(Exception ex)
+                {
+                    if (!(ex is Win32Exception))
+                    {
+                        throw;
+                    }
+                    //+
+                    //+ sometimes an exception is thrown for no reason
+                }
             };
             btnStopInstance.Click += delegate(Object sender, RoutedEventArgs e)
             {
