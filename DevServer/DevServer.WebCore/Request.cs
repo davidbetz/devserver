@@ -13,11 +13,11 @@ using System.IO;
 using System.Security;
 using System.Security.Permissions;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Hosting;
-using Microsoft.Win32.SafeHandles;
-using System.Text.RegularExpressions;
 using DevServer.Service;
+using Microsoft.Win32.SafeHandles;
 //+
 namespace DevServer.WebCore
 {
@@ -184,12 +184,7 @@ namespace DevServer.WebCore
                     {
                     }
                 }
-                //Int32 count = list.Count;
-                //ByteString[] strArray = new ByteString[count];
-                //for (Int32 i = 0; i < count; i++)
-                //{
-                //    strArray[i] = (ByteString)list[i];
-                //}
+                //+
                 return list.ToArray();
             }
 
@@ -1299,11 +1294,6 @@ namespace DevServer.WebCore
         {
             this.Reset();
             this.ReadAllHeaders();
-            if (!this.Connection.IsLocal)
-            {
-                // this._connection.WriteErrorAndClose(0x193);
-                // return false;
-            }
             if (((this.HeaderBytes == null) || (this.EndHeadersOffset < 0)) || ((this.HeaderByteStrings == null) || (this.HeaderByteStrings.Count == 0)))
             {
                 String headers;

@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 namespace DevServer
 {
     [Serializable]
-    [DataContract(Namespace = "http://www.netfxharmonics.com/Service/DevServer/2008/04/")]
+    [DataContract(Namespace = DevServer.Service.Information.Namespace.DevServer)]
     public class HostConfiguration : INotifyPropertyChanged
     {
         private String instanceId;

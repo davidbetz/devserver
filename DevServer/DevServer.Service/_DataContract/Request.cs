@@ -5,7 +5,7 @@ using System.Text;
 //+
 namespace DevServer.Service
 {
-    [DataContract(Namespace = "http://www.netfxharmonics.com/Service/DevServer/2008/04/")]
+    [DataContract(Namespace = Information.Namespace.DevServer)]
     public class Request
     {
         //- @ContentLength -//

@@ -1,21 +1,20 @@
-﻿// Assembly DevServer.WebCore, Version 9.0.0.0
-
-[assembly: System.Reflection.AssemblyVersion("1.0.0.0")]
-[assembly: System.Reflection.AssemblyCompany("Jampad Technology, Inc.")]
-[assembly: System.Reflection.AssemblyProduct("")]
-[assembly: System.Runtime.CompilerServices.CompilationRelaxations(8)]
-[assembly: System.Reflection.AssemblyCopyright("Copyright © Jampad Technology, Inc. 2008")]
-[assembly: System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute.DebuggingModes.IgnoreSymbolStoreSequencePoints)]
-[assembly: System.CLSCompliant(false)]
-[assembly: System.Reflection.AssemblyTitle("DevServer.WebCore")]
-[assembly: System.Reflection.AssemblyDescription("DevServer.WebCore")]
-[assembly: System.Reflection.AssemblyDefaultAlias("DevServer.WebCore.dll")]
-[assembly: System.Runtime.CompilerServices.RuntimeCompatibility(WrapNonExceptionThrows=true)]
-[assembly: System.Runtime.InteropServices.ComVisible(false)]
-[assembly: System.Reflection.AssemblyFileVersion("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersion("9.0.21022.8")]
-[assembly: System.Resources.SatelliteContractVersion("9.0.0.0")]
-[assembly: System.Resources.NeutralResourcesLanguage("en-US")]
-//[assembly: System.Reflection.AssemblyDelaySign(true)]
-[assembly: System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.RequestMinimum, SkipVerification=true)]
-
+﻿using System;
+using System.Reflection;
+using System.Runtime.InteropServices;
+//+
+[assembly: CLSCompliant(true)]
+[assembly: AssemblyTitle("NetFXHarmonics DevServer - Web Server Core")]
+[assembly: AssemblyDescription("Multi-Host Development Web Server")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("Jampad Technology, Inc.")]
+[assembly: AssemblyProduct("NetFXHarmonics DevServer")]
+[assembly: AssemblyCopyright("Copyright © Jampad Technology, Inc. 2008")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//+
+[assembly: ComVisible(false)]
+//+
+[assembly: Guid("0F9F3F7C-02A0-4ae5-9240-20570FC3C10E")]
+//+
+[assembly: AssemblyVersion("1.1.0.0")]
+[assembly: AssemblyFileVersion("1.1.0.0")]
