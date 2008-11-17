@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 //+
 namespace DevServer
 {
-    [DataContract(Namespace = "http://www.netfxharmonics.com/Service/DevServer/2008/04/")]
+    [DataContract(Namespace = DevServer.Service.Information.Namespace.DevServer)]
     public class TracingConfiguration
     {
         //- @AllowedContentTypes -//

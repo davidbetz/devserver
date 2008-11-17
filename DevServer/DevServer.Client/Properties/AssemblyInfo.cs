@@ -1,20 +1,20 @@
-﻿// Assembly DevServer.WebServer, Version 9.0.0.0
-
-[assembly: System.Reflection.AssemblyVersion("1.0.0.0")]
-[assembly: System.Runtime.CompilerServices.RuntimeCompatibility(WrapNonExceptionThrows=true)]
-[assembly: System.CLSCompliant(true)]
-[assembly: System.Runtime.CompilerServices.CompilationRelaxations(8)]
-[assembly: System.Reflection.AssemblyProduct("")]
-[assembly: System.Reflection.AssemblyCopyright("Copyright © Jampad Technology, Inc. 2008")]
-[assembly: System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute.DebuggingModes.IgnoreSymbolStoreSequencePoints)]
-[assembly: System.Reflection.AssemblyTitle("DevServer.Client")]
-[assembly: System.Reflection.AssemblyDescription("DevServer.Client")]
-[assembly: System.Reflection.AssemblyDefaultAlias("DevServer.WebServer.exe")]
-[assembly: System.Reflection.AssemblyCompany("Jampad Technology, Inc.")]
-[assembly: System.Reflection.AssemblyInformationalVersion("1.0.0.0")]
-[assembly: System.Runtime.InteropServices.ComVisible(false)]
-[assembly: System.Reflection.AssemblyFileVersion("1.0.0.0")]
-[assembly: System.Resources.NeutralResourcesLanguage("en-US")]
-[assembly: System.Resources.SatelliteContractVersion("1.0.0.0")]
-//[assembly: System.Reflection.AssemblyDelaySign(true)]
-[assembly: System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.RequestMinimum)]
+﻿using System;
+using System.Reflection;
+using System.Runtime.InteropServices;
+//+
+[assembly: CLSCompliant(true)]
+[assembly: AssemblyTitle("NetFXHarmonics DevServer - Client")]
+[assembly: AssemblyDescription("Multi-Host Development Web Server")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("Jampad Technology, Inc.")]
+[assembly: AssemblyProduct("NetFXHarmonics DevServer")]
+[assembly: AssemblyCopyright("Copyright © Jampad Technology, Inc. 2008")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//+
+[assembly: ComVisible(false)]
+//+
+[assembly: Guid("ABE0E308-B598-423b-94BF-05B5AF33A222")]
+//+
+[assembly: AssemblyVersion("1.1.0.0")]
+[assembly: AssemblyFileVersion("1.1.0.0")]
