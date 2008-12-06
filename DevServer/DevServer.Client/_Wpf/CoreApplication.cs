@@ -7,6 +7,7 @@ namespace DevServer.Client
     {
         private MainWindow window = null;
 
+        //+
         //- ~CoreApplication -//
         internal CoreApplication(List<Instance> instances) {
             window = new MainWindow(instances);

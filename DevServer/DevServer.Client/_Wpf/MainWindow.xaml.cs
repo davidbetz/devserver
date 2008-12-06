@@ -278,7 +278,7 @@ namespace DevServer.Client
             //+
             RequestManagementService requestService = new RequestManagementService(this);
             requestHost = new ServiceHost(requestService, new Uri("net.pipe://localhost/RequestManagementService"));
-            requestHost.AddServiceEndpoint(typeof(IRequestManagement), binding, String.Empty);
+            requestHost.AddServiceEndpoint(typeof(IRequestManagementService), binding, String.Empty);
             requestHost.Open();
         }
 

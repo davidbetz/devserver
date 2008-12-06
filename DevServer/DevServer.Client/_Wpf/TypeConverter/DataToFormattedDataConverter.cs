@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 using System.Windows.Data;
-using General.Xml;
+//+
 using Jayrock.Json;
 //+
 namespace DevServer.Client.TypeConverter
@@ -20,7 +20,7 @@ namespace DevServer.Client.TypeConverter
                 {
                     try
                     {
-                        data = XmlFormatter.Format(data);
+                        data = Themelia.Xml.XmlFormatter.Format(data);
                         return data;
                     }
                     catch

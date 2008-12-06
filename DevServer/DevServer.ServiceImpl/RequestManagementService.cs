@@ -4,7 +4,7 @@ using System.ServiceModel;
 namespace DevServer.Service
 {
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Single, InstanceContextMode = InstanceContextMode.Single, UseSynchronizationContext=true)]
-    public class RequestManagementService : IRequestManagement
+    public class RequestManagementService : IRequestManagementService
     {
         //- $RequestSubmission -//
         private IRequestSubmission RequestSubmission { get; set; }

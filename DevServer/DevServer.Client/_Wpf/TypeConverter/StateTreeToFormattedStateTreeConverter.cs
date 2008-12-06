@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Data;
-using General.Xml;
 //+
 namespace DevServer.Client.TypeConverter
 {
@@ -14,7 +13,7 @@ namespace DevServer.Client.TypeConverter
                 try
                 {
                     String stateData = (String)value;
-                    stateData = XmlFormatter.Format(stateData);
+                    stateData = Themelia.Xml.XmlFormatter.Format(stateData);
                     return stateData;
                 }
                 catch
