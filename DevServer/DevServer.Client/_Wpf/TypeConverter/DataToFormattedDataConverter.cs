@@ -7,7 +7,7 @@ using Jayrock.Json;
 //+
 namespace DevServer.Client.TypeConverter
 {
-    public class DataToFormattedDataConverter : IValueConverter
+    internal class DataToFormattedDataConverter : IValueConverter
     {
         //- @Convert -//
         public Object Convert(Object value, Type targetType, Object parameter, System.Globalization.CultureInfo culture)

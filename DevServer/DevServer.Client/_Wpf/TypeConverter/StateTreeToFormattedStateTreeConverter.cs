@@ -3,7 +3,7 @@ using System.Windows.Data;
 //+
 namespace DevServer.Client.TypeConverter
 {
-    public class StateTreeToFormattedStateTreeConverter : IValueConverter
+    internal class StateTreeToFormattedStateTreeConverter : IValueConverter
     {
         //- @Convert -//
         public Object Convert(Object value, Type targetType, Object parameter, System.Globalization.CultureInfo culture)

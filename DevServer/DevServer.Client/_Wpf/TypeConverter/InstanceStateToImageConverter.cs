@@ -3,7 +3,7 @@ using System.Windows.Data;
 //+
 namespace DevServer.Client.TypeConverter
 {
-    public class InstanceStateToImageConverter : IValueConverter
+    internal class InstanceStateToImageConverter : IValueConverter
     {
         //- @Convert -//
         public Object Convert(Object value, Type targetType, Object parameter, System.Globalization.CultureInfo culture)
@@ -12,7 +12,6 @@ namespace DevServer.Client.TypeConverter
             {
                 throw new InvalidOperationException("Target type must be of type ImageSource");
             }
-
             DevServer.Instance.InstanceState state = (DevServer.Instance.InstanceState)value;
             switch (state)
             {

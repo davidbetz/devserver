@@ -4,7 +4,7 @@ using DevServer.Service;
 //+
 namespace DevServer.Client
 {
-    class TabControl : System.Windows.Controls.TabControl
+    internal class TabControl : System.Windows.Controls.TabControl
     {
         //- @Window -//
         public MainWindow Window

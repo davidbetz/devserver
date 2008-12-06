@@ -141,7 +141,7 @@
     <Compile Include="CommandLineParser.cs" />
     <Compile Include="CommandLineDictionary.cs" />
     <Compile Include="Filter\FilterManager.cs" />
-    <Compile Include="PathFormatter.cs" />
+    <Compile Include="Path.cs" />
     <Compile Include="RequestResponseSet.cs" />
     <Compile Include="_Wpf\TypeConverter\VerboseTypeTracingToTextConverter.cs" />
     <Compile Include="_Wpf\TypeConverter\DataToFormattedDataConverter.cs" />

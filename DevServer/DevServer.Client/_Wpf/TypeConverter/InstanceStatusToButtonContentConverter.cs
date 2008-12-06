@@ -3,7 +3,7 @@ using System.Windows.Data;
 //+
 namespace DevServer.Client.TypeConverter
 {
-    public class InstanceStatusToButtonContentConverter : IValueConverter
+    internal class InstanceStatusToButtonContentConverter : IValueConverter
     {
         //- @Convert -//
         public Object Convert(Object value, Type targetType, Object parameter, System.Globalization.CultureInfo culture)
