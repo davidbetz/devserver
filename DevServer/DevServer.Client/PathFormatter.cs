@@ -29,19 +29,6 @@ namespace DevServer.Client
         {
         }
 
-        //- @Ctor -//
-        public Path(String url)
-        {
-            Uri uri = null;
-            try
-            {
-                uri = new Uri(url);
-            }
-            catch
-            {
-            }
-        }
-
         //- @GetFileNamePortion -//
         public String GetFileNamePortion( )
         {

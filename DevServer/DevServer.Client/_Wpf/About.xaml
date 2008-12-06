@@ -25,15 +25,16 @@
             <TextBlock Text="Lead Architect/Developer" FontWeight="Bold" />
             <StackPanel Orientation="Horizontal">
                 <Image Source="Image/bullet_purple.png" />
-               <TextBlock Text="David Betz &lt;dfb davidbetz net&gt;" />
+               <TextBlock Text="David Betz (MVP)" />
             </StackPanel>
+            <TextBlock Text="Contact: dfb davidbetz net" />
             <Button Name="btnBlogLink" Content="http://www.netfxharmonics.com/" Template="{StaticResource linkButtonTemplate}" />
             <Button Name="btnLinkedInLink" Content="http://www.linkedin.com/in/davidbetz" Template="{StaticResource linkButtonTemplate}" />
             <TextBlock Text="" />
             <TextBlock Text="Thanks to Fritz Onion for permission to use his ViewState parser." TextWrapping="Wrap" />
         </StackPanel>
         <StackPanel Margin="5 0 0 0" Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Left">
-            <TextBlock Text="NetFXHarmonics DevServer Copyright © Jampad Technology, Inc. 2008" />
+            <TextBlock Text="Copyright © Jampad Technology, Inc. 2008" />
             <TextBlock Text="Web server concepts adapted from Cassini, Copyright (c) Microsoft." />
             <TextBlock Text="Icons used are from the Silk Icon package found at http://www.famfamfam.com/lab/icons/silk/." />
         </StackPanel>

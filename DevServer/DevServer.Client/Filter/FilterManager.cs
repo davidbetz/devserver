@@ -99,19 +99,7 @@ namespace DevServer.Client.Filter
         //- $ApplyFileFilter -//
         private static Boolean ApplyFileFilter(RequestResponseSet set, String filename)
         {
-            Boolean result;
-            Path path = new Path(set.Request.Url);
-            String filenamePotion = path.GetFileNamePortion();
-            if (!String.IsNullOrEmpty(filenamePotion))
-            {
-                result = filenamePotion.ToLower().Contains(filename);
-            }
-            else
-            {
-                return true;
-            }
-            //+
-            return result;
+            return set.Request.Path.ToLower().Contains(filename);
         }
 
         //- $ApplyContentType -//

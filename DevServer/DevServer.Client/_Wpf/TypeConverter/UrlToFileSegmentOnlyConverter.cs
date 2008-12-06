@@ -8,8 +8,7 @@ namespace DevServer.Client.TypeConverter
         //- @Convert -//
         public Object Convert(Object value, Type targetType, Object parameter, System.Globalization.CultureInfo culture)
         {
-            Path path = new Path((String)value);
-            return path.GetFileNamePortion();
+            return value;
         }
 
         //- @ConvertBack -//
