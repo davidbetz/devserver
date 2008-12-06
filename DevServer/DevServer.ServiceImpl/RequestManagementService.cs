@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ServiceModel;
-
+//+
 namespace DevServer.Service
 {
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Single, InstanceContextMode = InstanceContextMode.Single, UseSynchronizationContext=true)]
