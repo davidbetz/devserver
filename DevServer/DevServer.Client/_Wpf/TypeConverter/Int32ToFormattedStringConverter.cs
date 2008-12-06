@@ -3,7 +3,7 @@ using System.Windows.Data;
 //+
 namespace DevServer.Client.TypeConverter
 {
-    public class Int32ToFormattedStringConverter : IValueConverter
+    internal class Int32ToFormattedStringConverter : IValueConverter
     {
         //- @Convert -//
         public Object Convert(Object value, Type targetType, Object parameter, System.Globalization.CultureInfo culture)

@@ -4,7 +4,7 @@ using System.Windows.Media;
 //+
 namespace DevServer.Client.TypeConverter
 {
-    public class HttpStatusCodeToBackgroundConverter : IValueConverter
+    internal class HttpStatusCodeToBackgroundConverter : IValueConverter
     {
         //- @Convert -//
         public Object Convert(Object value, Type targetType, Object parameter, System.Globalization.CultureInfo culture)
