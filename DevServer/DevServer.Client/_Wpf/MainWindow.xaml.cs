@@ -131,7 +131,7 @@ namespace DevServer.Client
         //- $CreateNewInstance -//
         private void CreateNewInstance()
         {
-            using (ManagementClient client = new ManagementClient("NetPipeManagementServiceEndpoint"))
+            using (ManagementClient client = new ManagementClient( ))
             {
                 if (Validate(txtPhysicalPath.Text, "ID is required") &&
                 Validate(txtPort.Text, "Port is required") &&
@@ -185,7 +185,7 @@ namespace DevServer.Client
         //- $KillInstances -//
         private void KillInstances()
         {
-            using (ManagementClient client = new ManagementClient("NetPipeManagementServiceEndpoint"))
+            using (ManagementClient client = new ManagementClient( ))
             {
                 client.KillAllInstances();
             }
@@ -194,7 +194,7 @@ namespace DevServer.Client
         //- $RefreshInstanceTabs -//
         private void RefreshInstanceTabs()
         {
-            using (ManagementClient client = new ManagementClient("NetPipeManagementServiceEndpoint"))
+            using (ManagementClient client = new ManagementClient( ))
             {
                 this.Instances = client.GetInstances();
             }
@@ -250,7 +250,7 @@ namespace DevServer.Client
         //- $StartInstances -//
         private void StartInstances()
         {
-            using (ManagementClient client = new ManagementClient("NetPipeManagementServiceEndpoint"))
+            using (ManagementClient client = new ManagementClient( ))
             {
                 for (int i = 0; i < this.Instances.Count; i++)
                 {
@@ -267,18 +267,25 @@ namespace DevServer.Client
         private void StartServices()
         {
             ManagementService service = new ManagementService();
-            managementHost = new ServiceHost(service);
+            managementHost = new ServiceHost(service, new Uri("net.pipe://localhost/ManagementService"));
+            System.ServiceModel.NetNamedPipeBinding binding = new System.ServiceModel.NetNamedPipeBinding
+            {
+                ReceiveTimeout = TimeSpan.FromMinutes(5)
+            };
+            binding.ReaderQuotas.MaxStringContentLength = 1048576;
+            managementHost.AddServiceEndpoint(typeof(IManagementService), binding, String.Empty);
             managementHost.Open();
             //+
             RequestManagementService requestService = new RequestManagementService(this);
-            requestHost = new ServiceHost(requestService);
+            requestHost = new ServiceHost(requestService, new Uri("net.pipe://localhost/RequestManagementService"));
+            requestHost.AddServiceEndpoint(typeof(IRequestManagement), binding, String.Empty);
             requestHost.Open();
         }
 
         //- ~UpdateConfiguration -//
         internal void UpdateConfiguration(HostConfiguration config)
         {
-            using (ManagementClient client = new ManagementClient("NetPipeManagementServiceEndpoint"))
+            using (ManagementClient client = new ManagementClient( ))
             {
                 client.UpdateInstanceConfiguration(config);
             }

@@ -107,7 +107,6 @@
                 <converter:HttpStatusCodeToBackgroundConverter x:Key="httpStatusCodeToBackgroundConverter" />
                 <converter:DateTimeToTimeOnlyConverter x:Key="dateTimeToTimeOnlyConverter" />
                 <converter:DataToFormattedDataConverter x:Key="dataToFormattedDataConverter" />
-                <converter:UrlToFileSegmentOnlyConverter x:Key="urlToFileSegmentOnlyConverter" />
             </Grid.Resources>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -153,7 +152,7 @@
 								<TextBlock Text=" - " />
 								<TextBlock Text="{Binding Response.ContentType}" />
 								<TextBlock Text=" - " />
-								<TextBlock Text="{Binding Request.Url, Converter={StaticResource urlToFileSegmentOnlyConverter}}" TextDecorations="Underline" />
+								<TextBlock Text="{Binding Request.Path}" TextDecorations="Underline" />
 								<TextBlock Text=" - " />
 								<TextBlock Text="{Binding Request.DateTime, Converter={StaticResource dateTimeToTimeOnlyConverter}}" />
 							</StackPanel>
@@ -184,7 +183,7 @@
                 </DockPanel.Resources>
                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
                     <TextBlock Text="Request URI: " />
-					<TextBlock Text="{Binding Request.Url}" />
+					<TextBlock Text="{Binding Request.Path}" />
 				</StackPanel>
                 <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
                     <TextBlock Text="Request Content Length: " />

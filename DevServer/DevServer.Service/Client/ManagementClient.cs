@@ -6,15 +6,23 @@ namespace DevServer.Service.Client
 {
     public class ManagementClient : ClientBase<IManagementService>, IManagementService
     {
+        static System.Xml.XmlDictionaryReaderQuotas q = new System.Xml.XmlDictionaryReaderQuotas
+        {
+            MaxStringContentLength = 1048576
+        };
         //- @Ctor -//
         public ManagementClient()
-            : base(new NetNamedPipeBinding(), new EndpointAddress("net.pipe://localhost/ManagementService"))
+            : base(new System.ServiceModel.NetNamedPipeBinding
+            {
+                ReceiveTimeout = TimeSpan.FromMinutes(5),
+                ReaderQuotas = q
+            }, new EndpointAddress("net.pipe://localhost/ManagementService"))
         {
         }
 
         //- @Ctor -//
-        public ManagementClient(String endpointConfigurationName)
-            : base(endpointConfigurationName)
+        public ManagementClient(System.ServiceModel.Channels.Binding binding, EndpointAddress address)
+            : base(binding, address)
         {
         }
 

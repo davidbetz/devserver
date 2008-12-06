@@ -156,7 +156,13 @@ namespace DevServer.Client
         //- $btnRestartInstance_Click -//
         private void btnRestartInstance_Click(Object sender, RoutedEventArgs e)
         {
-            using (ManagementClient client = new ManagementClient("NetPipeManagementServiceEndpoint"))
+            //System.ServiceModel.NetNamedPipeBinding binding = new System.ServiceModel.NetNamedPipeBinding
+            //{
+            //    ReceiveTimeout = TimeSpan.FromMinutes(5)
+            //};
+            //binding.ReaderQuotas.MaxStringContentLength = 1048576;
+            //System.ServiceModel.EndpointAddress address = new System.ServiceModel.EndpointAddress("net.pipe://localhost/RequestManagementService");
+            using (ManagementClient client = new ManagementClient( ))
             {
                 String name = this.Instance.Name;
                 Instance instance = client.RestartInstance(this.Instance.Id);
@@ -201,7 +207,7 @@ namespace DevServer.Client
         //- $KillInstance -//
         private void KillInstance()
         {
-            using (ManagementClient client = new ManagementClient("NetPipeManagementServiceEndpoint"))
+            using (ManagementClient client = new ManagementClient())
             {
                 client.KillInstance(this.Instance.Id);
             }
@@ -212,7 +218,7 @@ namespace DevServer.Client
         //- $StartupExistingInstance -//
         private void StartupExistingInstance()
         {
-            using (ManagementClient client = new ManagementClient("NetPipeManagementServiceEndpoint"))
+            using (ManagementClient client = new ManagementClient())
             {
                 String name = this.Instance.Name;
                 Instance instance = client.StartupExistingInstance(this.Instance.Id);
@@ -235,7 +241,7 @@ namespace DevServer.Client
         //- $StopInstance -//
         private void StopInstance()
         {
-            using (ManagementClient client = new ManagementClient("NetPipeManagementServiceEndpoint"))
+            using (ManagementClient client = new ManagementClient())
             {
                 String name = this.Instance.Name;
                 Instance instance = client.StopInstance(this.Instance.Id);

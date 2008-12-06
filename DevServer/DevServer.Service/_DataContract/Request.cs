@@ -42,7 +42,7 @@ namespace DevServer.Service
 
         //- @Url -//
         [DataMember]
-        public String Url { get; set; }
+        public String Path { get; set; }
 
         //- @Verb -//
         [DataMember]

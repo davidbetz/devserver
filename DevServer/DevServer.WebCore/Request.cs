@@ -913,7 +913,7 @@ namespace DevServer.WebCore
             DevServer.WebCore.Agent.ManagementAgent.SubmitRequest(this.InstanceId, this.Configuration,
                 new DevServer.Service.Request
                 {
-                    Url = this.Url,
+                    Path = this.Url,
                     DateTime = DateTime.Now,
                     ContentLength = this.ContentLength,
                     Data = this.RequestData,
