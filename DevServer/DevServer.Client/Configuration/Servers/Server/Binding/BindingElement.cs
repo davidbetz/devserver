@@ -12,7 +12,7 @@ namespace DevServer.Configuration
             get
             {
                 String address = (String)this["address"];
-                if (address.ToLower() == "localhost")
+                if (address.ToLower(System.Globalization.CultureInfo.CurrentCulture) == "localhost")
                 {
                     address = "loopback";
                 }

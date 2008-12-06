@@ -15,7 +15,7 @@ namespace DevServer.Client.Filter
             if (!String.IsNullOrEmpty(filter))
             {
                 filter = filter.Replace(" ", "");
-                filter = filter.ToLower();
+                filter = filter.ToLower(System.Globalization.CultureInfo.CurrentCulture);
                 String[] segments = filter.Split(';');
                 //+
                 foreach (String segment in segments)
@@ -66,7 +66,7 @@ namespace DevServer.Client.Filter
         private static Boolean ApplyVerbFilter(RequestResponseSet set, String verb)
         {
             Boolean result;
-            switch (verb.ToLower())
+            switch (verb.ToLower(System.Globalization.CultureInfo.CurrentCulture))
             {
                 case "get":
                 case "post":
@@ -74,7 +74,7 @@ namespace DevServer.Client.Filter
                 default:
                     throw new FormatException("Invalid verb");
             }
-            result = set.Request.Verb.ToLower().Contains(verb);
+            result = set.Request.Verb.ToLower(System.Globalization.CultureInfo.CurrentCulture).Contains(verb);
             //+
             return result;
         }
@@ -99,7 +99,7 @@ namespace DevServer.Client.Filter
         //- $ApplyFileFilter -//
         private static Boolean ApplyFileFilter(RequestResponseSet set, String filename)
         {
-            return set.Request.Path.ToLower().Contains(filename);
+            return set.Request.Path.ToLower(System.Globalization.CultureInfo.CurrentCulture).Contains(filename);
         }
 
         //- $ApplyContentType -//
@@ -109,7 +109,7 @@ namespace DevServer.Client.Filter
             String responseContentType = set.Response.ContentType;
             if (!String.IsNullOrEmpty(responseContentType))
             {
-                result = responseContentType.ToLower().Contains(contentType);
+                result = responseContentType.ToLower(System.Globalization.CultureInfo.CurrentCulture).Contains(contentType);
             }
             else
             {

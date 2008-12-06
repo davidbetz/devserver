@@ -268,11 +268,11 @@ namespace DevServer.WebCore
                 }
                 else
                 {
-                    if (this.Instance.BoundIPAddress.ToLower() == "loopback")
+                    if (this.Instance.BoundIPAddress.ToLower(System.Globalization.CultureInfo.CurrentCulture) == "loopback")
                     {
                         this.Socket.Bind(new IPEndPoint(IPAddress.Loopback, this.Port));
                     }
-                    else if (this.Instance.BoundIPAddress.ToLower() == "any")
+                    else if (this.Instance.BoundIPAddress.ToLower(System.Globalization.CultureInfo.CurrentCulture) == "any")
                     {
                         this.Socket.Bind(new IPEndPoint(IPAddress.Any, this.Port));
                     }

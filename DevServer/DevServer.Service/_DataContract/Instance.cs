@@ -50,11 +50,11 @@ namespace DevServer
             {
                 if (!String.IsNullOrEmpty(boundIPAddress))
                 {
-                    if (boundIPAddress.ToLower() == "any")
+                    if (boundIPAddress.ToLower(System.Globalization.CultureInfo.CurrentCulture) == "any")
                     {
                         return "Any";
                     }
-                    else if (boundIPAddress.ToLower() == "loopback")
+                    else if (boundIPAddress.ToLower(System.Globalization.CultureInfo.CurrentCulture) == "loopback")
                     {
                         return "Loopback";
                     }

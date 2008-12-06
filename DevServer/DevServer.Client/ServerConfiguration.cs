@@ -23,10 +23,10 @@ namespace DevServer.Client
         //- $FindServerConfiguration -//
         private static ServerElement FindServerConfiguration(String serverKey, ServerCollection servers, String profileName)
         {
-            String lowerCaseServerKey = serverKey.ToLower();
+            String lowerCaseServerKey = serverKey.ToLower(System.Globalization.CultureInfo.CurrentCulture);
             for (Int32 i = 0; i < servers.Count; i++)
             {
-                if (servers[i].Key.ToLower() == lowerCaseServerKey)
+                if (servers[i].Key.ToLower(System.Globalization.CultureInfo.CurrentCulture) == lowerCaseServerKey)
                 {
                     return servers[i];
                 }
@@ -38,11 +38,11 @@ namespace DevServer.Client
         private static List<ServerElement> PullServersFromActiveProfile(String activeProfile, DevServerConfigurationSection cs)
         {
             Int32 activeProfileIndex = -1;
-            String lowerCaseActiveProfile = activeProfile.ToLower();
+            String lowerCaseActiveProfile = activeProfile.ToLower(System.Globalization.CultureInfo.CurrentCulture);
             StartupProfileCollection profiles = cs.StartupProfiles;
             for (Int32 i = 0; i < profiles.Count; i++)
             {
-                if (profiles[i].Name.ToLower() == lowerCaseActiveProfile)
+                if (profiles[i].Name.ToLower(System.Globalization.CultureInfo.CurrentCulture) == lowerCaseActiveProfile)
                 {
                     activeProfileIndex = i;
                     break;
@@ -124,7 +124,7 @@ namespace DevServer.Client
             {
                 serverKey = dictionary["serverKey"];
             }
-            else if (cs.StartupProfiles.Count > 0 && !String.IsNullOrEmpty(cs.StartupProfiles.ActiveProfile) && cs.StartupProfiles.ActiveProfile.ToLower() != "none")
+            else if (cs.StartupProfiles.Count > 0 && !String.IsNullOrEmpty(cs.StartupProfiles.ActiveProfile) && cs.StartupProfiles.ActiveProfile.ToLower(System.Globalization.CultureInfo.CurrentCulture) != "none")
             {
                 activeProfile = cs.StartupProfiles.ActiveProfile;
             }
