@@ -245,13 +245,11 @@ namespace DevServer.WebCore
             this.Socket.ExclusiveAddressUse = true;
             try
             {
-                //this.Socket.Bind(new IPEndPoint(IPAddress.Any, this.Port));
                 BindIPAddress();
             }
             catch
             {
                 this.Socket.ExclusiveAddressUse = false;
-                //this.Socket.Bind(new IPEndPoint(IPAddress.Any, this.Port));
                 BindIPAddress();
             }
             this.Socket.Listen(0x7fffffff);

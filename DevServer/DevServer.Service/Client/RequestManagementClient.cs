@@ -3,7 +3,7 @@ using System.ServiceModel;
 //+
 namespace DevServer.Service.Client
 {
-    public class RequestManagementClient : ClientBase<IRequestManagement>, IRequestManagement
+    public class RequestManagementClient : ClientBase<IRequestManagementService>, IRequestManagementService
     {
         //- @Ctor -//
         public RequestManagementClient()

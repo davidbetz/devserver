@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+//+
 using DevServer.Service;
 using DevServer.Service.Client;
 using DevServer.WebCore.ViewState;
@@ -10,7 +11,7 @@ namespace DevServer.WebCore.Agent
     public static class ManagementAgent
     {
         //- $ContentType -//
-        class ContentType
+        private class ContentType
         {
             //+ Image
             public const String Png = "image/png";

@@ -117,6 +117,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="_Themelia\IO\StreamConverter.cs" />
     <Compile Include="_Wpf\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
@@ -142,11 +143,10 @@
     <Compile Include="Filter\FilterManager.cs" />
     <Compile Include="PathFormatter.cs" />
     <Compile Include="RequestResponseSet.cs" />
-    <Compile Include="_Wpf\TypeConverter\UrlToFileSegmentOnlyConverter.cs" />
     <Compile Include="_Wpf\TypeConverter\VerboseTypeTracingToTextConverter.cs" />
     <Compile Include="_Wpf\TypeConverter\DataToFormattedDataConverter.cs" />
     <Compile Include="_Wpf\TypeConverter\StateTreeToFormattedStateTreeConverter.cs" />
-    <Compile Include="_General\Xml\XmlFormatter.cs" />
+    <Compile Include="_Themelia\Xml\XmlFormatter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

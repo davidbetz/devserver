@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
+//+
 using DevServer.WebCore;
+//+
 using RequestResponseDictionary = System.Collections.Generic.Dictionary<DevServer.Service.Request, DevServer.Service.Response>;
-
+//+
 namespace DevServer.Service
 {
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
@@ -15,8 +17,7 @@ namespace DevServer.Service
         {
             get
             {
-                return (from p in this.Servers
-                        select p.Instance).ToList();
+                return this.Servers.Select(p => p.Instance).ToList();
             }
         }
 
@@ -29,6 +30,7 @@ namespace DevServer.Service
         //- @Messages -//
         public List<String> Messages { get; set; }
 
+        //+
         //- @Ctor -//
         public ManagementService()
         {
@@ -37,6 +39,7 @@ namespace DevServer.Service
             Messages = new List<String>();
         }
 
+        //+
         //- @GetInstances -//
         public List<Instance> GetInstances()
         {
@@ -71,7 +74,7 @@ namespace DevServer.Service
                 }
                 catch
                 {
-                    //+Don't really care...
+                    //+ don't really care
                 }
             }
         }
@@ -89,7 +92,7 @@ namespace DevServer.Service
                 }
                 catch
                 {
-                    //+Don't really care...
+                    //+ don't really care
                 }
             }
         }
@@ -105,11 +108,11 @@ namespace DevServer.Service
                 }
                 //+
                 Server server = null;
-                //+ Does the instance already exist?
+                //+ does the instance already exist?
                 if (this.Servers.Count(p => p.Instance.Id == instance.Id) > 0)
                 {
                     server = this.Servers.Single(p => p.Instance.Id == instance.Id);
-                    //+ Is it already started
+                    //+ is it already started?
                     if (server.Instance.State == Instance.InstanceState.Started)
                     {
                         instance.OperationStatus = Instance.InstanceStatus.AlreadyStarted;
@@ -146,6 +149,7 @@ namespace DevServer.Service
                 instance.State = Instance.InstanceState.Stopped;
                 instance.OperationStatus = Instance.InstanceStatus.ExceptionThrown;
             }
+            //+
             return instance;
         }
 
@@ -237,6 +241,7 @@ namespace DevServer.Service
             //+
             server.Instance.State = Instance.InstanceState.Stopped;
             server.Instance.OperationStatus = Instance.InstanceStatus.OperationSuccess;
+            //+
             return server.Instance;
         }
 
@@ -271,7 +276,7 @@ namespace DevServer.Service
                 instance.OperationStatus = Instance.InstanceStatus.StoppedButCouldNotStart;
                 return instance;
             }
-
+            //+
             return instance;
         }
 

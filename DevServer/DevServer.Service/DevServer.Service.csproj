@@ -62,9 +62,9 @@
     <Compile Include="_DataContract\Response.cs" />
     <Compile Include="_DataContract\Request.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="_ServiceContract\IRequestManagement.cs" />
+    <Compile Include="_ServiceContract\IRequestManagementService.cs" />
     <Compile Include="_ServiceContract\IManagementService.cs" />
-    <Compile Include="_DataContract\CassiniInstanceData.cs" />
+    <Compile Include="_DataContract\DevServerInstanceData.cs" />
     <Compile Include="_DataContract\Instance.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -112,6 +112,7 @@ namespace DevServer.WebCore
                 {
                     return null;
                 }
+                //+
                 Int32 available = this.Socket.Available;
                 if (available > maxBytes)
                 {
@@ -132,6 +133,7 @@ namespace DevServer.WebCore
                     }
                     buffer = dst;
                 }
+                //+
                 return buffer;
             }
             catch
@@ -159,6 +161,7 @@ namespace DevServer.WebCore
             catch
             {
             }
+            //+
             return available;
         }
 
@@ -213,9 +216,11 @@ namespace DevServer.WebCore
                     try
                     {
                         stream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
+                        //+
                         Int32 length = (int)stream.Length;
                         Byte[] buffer = new Byte[length];
                         Int32 contentLength = stream.Read(buffer, 0, length);
+                        //+
                         headers = MakeResponseHeaders(200, moreHeaders, contentLength, keepAlive);
                         this.Socket.Send(Encoding.UTF8.GetBytes(headers));
                         this.Socket.Send(buffer, 0, contentLength, SocketFlags.None);
@@ -224,12 +229,14 @@ namespace DevServer.WebCore
                         MemoryStream memoryStream = new MemoryStream();
                         memoryStream.Read(buffer, 0, contentLength);
                         statusCode = 200;
+                        //+
                         return String.Format("{0}\n{1}", headers, ASCIIEncoding.UTF8.GetString(memoryStream.ToArray()));
                     }
                     catch (SocketException)
                     {
                         statusCode = 500;
                         headers = String.Empty;
+                        //+
                         return String.Empty;
                     }
                     finally
@@ -255,11 +262,13 @@ namespace DevServer.WebCore
                 Int32 contentLength = (body != null) ? Encoding.UTF8.GetByteCount(body) : 0;
                 headers = MakeResponseHeaders(statusCode, headersToSet, contentLength, keepAlive);
                 this.Socket.Send(Encoding.UTF8.GetBytes(headers + body));
+                //+
                 return headers + body;
             }
             catch (SocketException)
             {
                 headers = "";
+                //+
                 return String.Empty;
             }
             finally
@@ -317,6 +326,7 @@ namespace DevServer.WebCore
             get
             {
                 String remoteIP = this.RemoteIP;
+                //+
                 return remoteIP.Equals("127.0.0.1") || LocalServerIP.Equals(remoteIP);
             }
         }
@@ -344,6 +354,7 @@ namespace DevServer.WebCore
                 {
                     localServerIP = Dns.GetHostEntry(Environment.MachineName).AddressList[0].ToString();
                 }
+                //+
                 return localServerIP;
             }
         }
@@ -358,6 +369,7 @@ namespace DevServer.WebCore
                 {
                     return remoteEndPoint.Address.ToString();
                 }
+                //+
                 return "127.0.0.1";
             }
         }
