@@ -3,7 +3,7 @@ using System.Collections.Generic;
 //+
 namespace DevServer.Client
 {
-    class Path
+    internal class Path
     {
         //- $Uri -//
         private Uri Uri { get; set; }
@@ -24,11 +24,6 @@ namespace DevServer.Client
             }
         }
 
-        //- @Ctor -//
-        public Path()
-        {
-        }
-
         //- @GetFileNamePortion -//
         public String GetFileNamePortion( )
         {
@@ -41,6 +36,7 @@ namespace DevServer.Client
                 return String.Empty;
             }
             String[] parts = this.Url.Split('/');
+            //+
             return parts[parts.Length - 1];
         }
     }
