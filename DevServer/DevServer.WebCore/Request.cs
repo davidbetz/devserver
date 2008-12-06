@@ -361,7 +361,7 @@ namespace DevServer.WebCore
             if (!this.headersSent)
             {
                 String headers = this.ResponseHeadersBuilder.ToString();
-                String headersLowerCase = headers.ToLower().ToString();
+                String headersLowerCase = headers.ToLower(System.Globalization.CultureInfo.CurrentCulture).ToString();
                 Int32 contentTypeIndex = headersLowerCase.IndexOf("content-type:");
                 if (contentTypeIndex > -1)
                 {

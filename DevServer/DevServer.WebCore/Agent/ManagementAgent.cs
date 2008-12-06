@@ -150,7 +150,7 @@ namespace DevServer.WebCore.Agent
                         //+ this feature isn't that important; we don't need it blowing up in the middle of our work.
                     }
                     //+ Favicon Checking
-                    if (request.Path.ToLower().EndsWith("favicon.ico") && !configuration.EnableFaviconTracing)
+                    if (request.Path.ToLower(System.Globalization.CultureInfo.CurrentCulture).EndsWith("favicon.ico") && !configuration.EnableFaviconTracing)
                     {
                         return;
                     }
