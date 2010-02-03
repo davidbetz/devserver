@@ -9,10 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevServer.Service", "DevSer
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SampleWebsite1", "SampleWebsite1", "{24E3C59C-25BA-4200-8EBE-FA7DDC7FA0B2}"
 	ProjectSection(WebsiteProperties) = preProject
-		SccProjectName = "SAK"
-		SccAuxPath = "SAK"
-		SccLocalPath = "SAK"
-		SccProvider = "SAK"
 		TargetFramework = "3.5"
 		Debug.AspNetCompiler.VirtualPath = "/SampleWebsite1"
 		Debug.AspNetCompiler.PhysicalPath = "SampleWebsite1\"
