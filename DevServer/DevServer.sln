@@ -40,10 +40,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SampleWebsite2", "SampleWebsite2", "{E58A234E-6EB1-4A0D-8B1A-2DBF7A1C13AE}"
 	ProjectSection(WebsiteProperties) = preProject
-		SccProjectName = "SAK"
-		SccAuxPath = "SAK"
-		SccLocalPath = "SAK"
-		SccProvider = "SAK"
 		TargetFramework = "3.5"
 		Debug.AspNetCompiler.VirtualPath = "/SampleWebsite2"
 		Debug.AspNetCompiler.PhysicalPath = "SampleWebsite2\"
@@ -71,34 +67,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assembly", "Assembly", "{DA
 	EndProjectSection
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 7
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs07.codeplex.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = DevServer.Client\\DevServer.Client.csproj
-		SccProjectName1 = DevServer.Client
-		SccLocalPath1 = DevServer.Client
-		SccProjectUniqueName2 = DevServer.Service\\DevServer.Service.csproj
-		SccProjectName2 = DevServer.Service
-		SccLocalPath2 = DevServer.Service
-		SccProjectUniqueName3 = DevServer.ServiceImpl\\DevServer.ServiceImpl.csproj
-		SccProjectName3 = DevServer.ServiceImpl
-		SccLocalPath3 = DevServer.ServiceImpl
-		SccProjectUniqueName4 = DevServer.WebCore\\DevServer.WebCore.csproj
-		SccProjectName4 = DevServer.WebCore
-		SccLocalPath4 = DevServer.WebCore
-		SccWebProject5 = true
-		SccProjectUniqueName5 = SampleWebsite1
-		SccLocalPath5 = .
-		SccProjectFilePathRelativizedFromConnection5 = SampleWebsite1\\
-		SccProjectEnlistmentChoice5 = 2
-		SccWebProject6 = true
-		SccProjectUniqueName6 = SampleWebsite2
-		SccLocalPath6 = .
-		SccProjectFilePathRelativizedFromConnection6 = SampleWebsite2\\
-		SccProjectEnlistmentChoice6 = 2
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
 		Debug|Any CPU = Debug|Any CPU
