@@ -2,10 +2,6 @@
 
 **Copyright 2008 David Betz**
 
-This is the November 2008 release of NetFXHarmonics DevServer and has been stamped as v1.1.
-
-Former hosting on CodePlex: [https://devserver.codeplex.com/](https://devserver.codeplex.com/)
-
 ## Description
 
 NetFXHarmonics DevServer is a web server hosting environment built on WPF and WCF technologies that allows multiple instances of Cassini-like web servers to run in parallel. DevServer also includes tracing capabilities for monitoring requests and responses, request filtering, automatic ViewState and ControlState parsing, visually enhanced HTTP status codes, IP binding modes for both local-only as well as remote access, and easy to use XML configuration. 
@@ -14,6 +10,8 @@ DevServer Announcement and Overview
 [http://www.netfxharmonics.com/2008/04/netfxharmonics-devserver-released](http://www.netfxharmonics.com/2008/04/netfxharmonics-devserver-released)
 
 Scott Hanselmen mention: [http://www.hanselman.com/blog/TheWeeklySourceCode23BigSolutionEdition.aspx](http://www.hanselman.com/blog/TheWeeklySourceCode23BigSolutionEdition.aspx)
+
+![](https://github.com/davidbetz/devserver/raw/master/readme.png)
 
 ## As a Training Tool
 
